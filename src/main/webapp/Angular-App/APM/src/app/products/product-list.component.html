@@ -53,18 +53,22 @@
                                 
                                 />
                         </td>
-                        <td>
+                        <td><a [routerLink]="['/product',product.productId]">
                             {{product.productName}}
+                            </a>
+                            
                         </td>
                         <td>
-                            {{product.code | lowercase | convertToSpaces:'-'}}
+                            {{product.productCode | lowercase | convertToSpaces:'-'}}
                         </td>
                         <td>
                             {{product.releaseDate}}
                         </td>
                         <td>{{product.price | currency:'SEK':true:'1.2-2'}}</td>
                         
-                        <td><pm-star [rating]='product.starRating'></pm-star></td>
+                        <td><pm-star [rating]='product.starRating'
+                                (ratingClicked)="onRatingClicked($event)"        
+                                ></pm-star></td>
                     </tr>
                 </tbody>
             </table>
